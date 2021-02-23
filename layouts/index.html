@@ -1,0 +1,22 @@
+<body>
+  <h1>This is posts section</h1>
+  <ul>
+    {{ range (where .Pages "Section" "posts" ) }}
+    <li>
+      <a href="{{ .RelPermalink }}">
+        {{ .Title }}
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+  <h1>This is blogs section</h1>
+  <ul>
+    {{ range (where .Pages "Section" "blogs") }}
+    <li>
+      <a href="{{ .RelPermalink }}">
+        {{ .Title }}
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+</body>
