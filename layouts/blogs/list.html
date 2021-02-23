@@ -1,0 +1,12 @@
+<body>
+    <h1>This list of all blogs</h1>
+    <ul>
+      {{ range .Pages }}
+      <li>
+        <a href="{{ .Permalink }}">
+          {{ .Title }}
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </body>
