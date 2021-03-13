@@ -1,0 +1,54 @@
+local_backend: true #Must be put on top
+#local_backend: true 
+    # when using a custom proxy server port
+    #url: http://localhost:8081/api/v1
+    # when accessing the local site from a host other than 'localhost' or '127.0.0.1'
+    #allowed_hosts: ['192.168.0.1']
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: static/images
+public_folder: static/images
+collections:
+  - name: globalConfig
+    label: Global Site Config    
+    files: 
+      - name: config
+        label: Global 
+        file: config.yml
+        fields: 
+          - widget: string
+            name: baseURL
+            label: Base Url
+            required: true
+          - widget: string
+            name: title
+            label: Title of website
+            required: true
+  - name: blogConfig
+    label: My Blog
+    create: true
+    delete: true
+    folder: content/blogs
+    slug: '{{year}}-{{month}}-{{day}}_{{slug}}'
+    fields:
+      - widget: string
+        name: title
+        label: Title
+        required: true
+        hint: The title of the blog.
+      - widget: date
+        name: date
+        label: Date
+        required: true
+      - widget: boolean
+        name: draft
+        label: Draft
+        required: false
+        default: true
+      - widget: markdown
+        name: body
+        label: Content
+        required: true
+        hint: Page content
